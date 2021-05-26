@@ -9,8 +9,20 @@ pipeline{
 
             steps{
                 echo "Building..."
+		sh 'git pull origin master'
                 sh 'npm install'
                 }
+	    post{
+			always{
+				echo 'Finished'
+			}
+			failure{
+				messageFunction('BUILD', 'Failure')
+			}
+			success{
+				messageFunction('BUILD', 'Success')
+			}
+		}
             }
      
       stage('Test') {
@@ -18,6 +30,17 @@ pipeline{
               echo 'Testing'
               sh 'npm run test'
           }
+		post{
+			always{
+				echo 'Finished'
+			}
+			failure{
+				messageFunction('TEST', 'Failure')
+			}
+			success{
+				messageFunction('TEST', 'Success')
+			}
+		}
       }
   }
 	post{
