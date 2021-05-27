@@ -9,7 +9,7 @@ pipeline{
 
             steps{
                 echo "Building..."
-		sh 'git pull origin maste'
+		sh 'git pull origin master'
                 sh 'npm install'
                 }
 	    post{
