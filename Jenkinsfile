@@ -49,6 +49,6 @@ def messageFunction(stage, status) {
 	echo status
 	emailext attachLog: true,
 		body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
-		to: 'wiktorligeza@gmail.com',
+		to: 'jakub.jurczak42@gmail.com',
 		subject: stage + " " + status
 }
